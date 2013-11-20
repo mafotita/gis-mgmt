@@ -7,7 +7,7 @@ p{margin: 8px 0 20px 0; line-height: 18px;}
 a, a:visited{color: #397DB8; text-decoration: none;}
 a:hover{text-decoration: underline;}
 
-.wrapper{display: block; padding: 4px 30px 0 30px;}
+.wrapper{display: block; padding: 4px 15px 0 15px;}
 
 .map{background-color:#eee; position: absolute; top: 0; left: 0; bottom: 0; width: 80%; *height:100%;}
 .sidepanel{background-color:#FFF; position: absolute; top: 0; right: 0; bottom: 0; width: 20%; height: 100%; overflow: auto;}

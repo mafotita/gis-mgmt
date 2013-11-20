@@ -14,7 +14,11 @@
     <!--Switch between the different themes changing the stylesheet below - light-theme.css |dark-theme.css -->
     <link rel="stylesheet" href="css/light-theme.css">
     <link rel="stylesheet" href="css/makeitresponsive.css">
+	<link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
 	<style>
+	body, .context{
+	font-family: 'Nunito', sans-serif;
+	}
 	.button {
 				border-radius:6px;
 				-webkit-border-radius:6px;
@@ -112,7 +116,7 @@ a{font-weight:bold;}
 			// wire up the button queries
 			var LayerActions = {
 				since2010: function(){
-				sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013 WHERE moddate > CAST('2009/12/31' as date)");
+				sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013 WHERE instdate > CAST('2009/12/31' as date)");
 
 				  return true;
 				},	
@@ -194,11 +198,14 @@ a{font-weight:bold;}
 		<p><a href="#about">about</a></p>
         <!--Copy and paste the div below for creating content blocks-->
         <hr>
-		<p>This map allows you to view and filter the New York City bicycle network by  <a href="#design">design</a>, <a href="#term">term</a>, or <a href="#time">time</a>. Hover your mouse over a line to highlight it and click for more info.</p>
+		<p style="font-size:85%;">This map allows you to view and filter the New York City bicycle network by  <a href="#design">design</a>, <a href="#term">term</a>, or <a href="#time">time</a>. Hover your mouse over a line to highlight it and click for more info.
+		</p>
+		<p style="font-size:85%;">
+		Please note that the map symbology is under active development. Any thin yellow lines are edge cases that are being incorporated into the route symbology.</p>
 		
 		<hr>
 						<h1><a name="design">Design Type</a></h1>
-			<table width="100%" border="0" style="text-align:right;">
+			<table width="100%" border="0" style="text-align:left;">
 				<tr>
 					<td colspan="2"><a href="#all" id="all" class="button all">All Data</a></td>
 				</tr>
@@ -224,7 +231,7 @@ a{font-weight:bold;}
 		
 		<hr>	<h1><a name="term">Terms</a></h1>
 					
-			<table width="100%" border="0" style="text-align:center;">
+			<table width="100%" border="0" style="text-align:left;">
 
 			<tr>
 					<td><a href="#termG" id="termG" class="button termG">Giuliani's Term<br/>1994 - 2001</a></td>
@@ -264,7 +271,7 @@ a{font-weight:bold;}
 		   		   <ul>
 				<li>dissolving the lines by street,from/to, and design</li>
 				<li>creating YEAR and MONTH fields for instdate and moddate fields</li>
-				<li>recalculate lane mileage</li>
+				<li>recalculating lane mileage</li>
 		   </ul>
 			</p>
 		   <p>Work to be done:

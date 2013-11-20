@@ -24,9 +24,8 @@
 				display:inline-block;
 				color: green;
 				font-size:14px;
-				height:33px;
-				line-height:33px;
-				width:125px;
+				height:auto;
+				padding:4px;
 				text-decoration:none;
 				text-align:center;
 			}
@@ -46,6 +45,7 @@
 .selected{
 			background-color: black;
 }
+a{font-weight:bold;}
 	</style>
 	<script>
 		  var map;
@@ -152,6 +152,20 @@
 				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013 WHERE instdate > CAST('2001/12/31' as date) AND instdate < CAST('2009/12/31' as date)");
 				  return true;
 				  },
+				termG: function(){
+				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013 WHERE instdate > CAST('1993/12/31' as date) AND instdate < CAST('2001/12/31' as date)");
+				  return true;
+				  },
+				Paths: function(){
+				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013 WHERE ( ft_facilit IN ('Protected Path', 'Ped Plaza', 'Path') OR tf_facilit IN ('Protected Path', 'Ped Plaza', 'Path'))");
+				  return true; },
+				lanes: function(){
+				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013 WHERE ( ft_facilit IN ('Standard', 'Curbside') OR tf_facilit IN ('Standard', 'Curbside'))");
+				  return true; },
+				routes: function(){
+				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013 WHERE ( ft_facilit IN ('Sharrows', 'Signed Route') OR tf_facilit IN ('Sharrows', 'Signed Route'))");
+				  return true;
+				},				
 				};
 			
 			// make the currently selected button have the selected class
@@ -177,53 +191,89 @@
       <div class="wrapper">
 
         <h1>NYC Bike Routes</h1>
+		<p><a href="#about">about</a></p>
         <!--Copy and paste the div below for creating content blocks-->
         <hr>
-		<p>Hover your mouse over a line to highlight it, and click for more info.</p>
+		<p>This map allows you to view and filter the New York City bicycle network by  <a href="#design">design</a>, <a href="#term">term</a>, or <a href="#time">time</a>. Hover your mouse over a line to highlight it and click for more info.</p>
+		
 		<hr>
-		<p>Filter by <a href="#design">design</a>, <a href="#term">term</a>, or <a href="#time">time</a>.</p>
-		<hr>
-						<a name="design">Design filters</a>
-			<table width="100%" border="0" style="text-align:center;">
+						<h1><a name="design">Design Type</a></h1>
+			<table width="100%" border="0" style="text-align:right;">
 				<tr>
 					<td colspan="2"><a href="#all" id="all" class="button all">All Data</a></td>
 				</tr>
 				<tr>
 					<td><a href="#onStreet" id="onStreet" class="button onStreet">On Street (only)</a></td>
+				</tr>
+				<tr>
 					<td><a href="#greenway" id="greenway" class="button greenway">Greenway</a></td>
 				</tr>
+
+				<tr>
+					<td><a href="#Paths" id="Paths" class="button Paths">Paths</a></td>
+				</tr>
+				<tr>
+					<td><a href="#lanes" id="lanes" class="button lanes">Lanes</a></td>
+				</tr>
+				<tr>
+					<td><a href="#routes" id="routes" class="button routes">Routes</a></td>
+				</tr>
+
 				</table>
 		
 		
-		<hr>
-						<a name="term">Term filters</a>
+		<hr>	<h1><a name="term">Terms</a></h1>
+					
 			<table width="100%" border="0" style="text-align:center;">
 
+			<tr>
+					<td><a href="#termG" id="termG" class="button termG">Giuliani's Term<br/>1994 - 2001</a></td>
+				</tr>
 				<tr>
-					<td><a href="#termBloom" id="termBloom" class="button termBloom">Mayor's Term</a></td>
-					<td><a href="#termJSK" id="termJSK" class="button termJSK">JSK Term</a></td>
+					<td><a href="#termBloom" id="termBloom" class="button termBloom">Bloomberg's Term<br/>2002 - present</a></td>
+				</tr>
+				<tr>
+					<td><a href="#termJSK" id="termJSK" class="button termJSK">JSK's Term at DOT<br/>2006 - present</a></td>
 				</tr>
 				</table>
 				<hr>
-				<a name="time">Time filters</a>
-				<table width="100%" border="0" style="text-align:center;">
+				<h1><a name="time">Network Growth Over Time</a></h1>
+				<table width="100%" border="0" style="text-align:left;">
 				<tr>
 					<td colspan="2"><a href="#pre1970" id="pre1970" class="button pre1970">Pre-1970</a></td>
 				</tr>
 				<tr>
 					<td><a href="#the70sto80s" id="the70sto80s" class="button the70sto80s">1970 to 1989</a></td>
-				<td><a href="#the90sto02" id="the90sto02" class="button the90sto02">1990 - 2002</a></td>
+									</tr>
+				<tr>
+				<td><a href="#the90sto02" id="the90sto02" class="button the90sto02">1990 - 2001</a></td>
 				</tr>
 				<tr>
 					<td><a href="#the02to10" id="the02to10" class="button the02to10">2002 to 2010</a></td>
+									</tr>
+				<tr>
 				<td><a href="#since2010" id="since2010" class="button since2010">Since 2010</a></td>
 				</tr>				
 				</table>
 
 
         <div class="context footer">
-           <p>Map designed and coded by <a href="http://aaronfraint.com" target="_blank">Aaron Fraint</a></p>
-		   <p>Bike Route GIS data available at <a href="http://nyc.gov/dot/data" target="_blank">NYC DOT's data portal</a></p>
+           <p>Map designed and coded by <a name="about" href="http://aaronfraint.com" target="_blank">Aaron Fraint</a> using <a href="http://developers.cartodb.com/documentation/cartodb-js.html" target="_blank">cartodb.js</a> and <a href="http://cartodb.com/" target="_blank">CartoDB</a>'s GIS hosting. </p>
+		   <p>Bike Route GIS data available at <a href="http://nyc.gov/dot/data" target="_blank">NYC DOT's data portal.</a></p>
+		   <p>Data was minimally processed after acquisition. Steps included: 
+		   		   <ul>
+				<li>dissolving the lines by street,from/to, and design</li>
+				<li>creating YEAR and MONTH fields for instdate and moddate fields</li>
+				<li>recalculate lane mileage</li>
+		   </ul>
+			</p>
+		   <p>Work to be done:
+		   <ul>
+				<li>integrate a time slider</li>
+				<li>multiple queries: design AND term</li>
+		   </ul>
+		   Please get in touch if you want to help out!
+		   </p>
         </div>
       </div>
     </div>

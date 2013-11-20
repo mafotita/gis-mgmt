@@ -83,6 +83,15 @@
 
 			  var sublayer = layer.getSubLayer(0);
 
+			  
+			  sublayer.on('featureOver', function(e, pos, latlng, data) {
+				sublayer.setCartoCSS(" #nyc_bike_routes_052013::glow{   [cartodb_id=" + data.cartodb_id + "]         {line-width: 25;line-color:yellow;}}   "+ subLayerOptions.cartocss + "#nyc_bike_routes_052013::over{   [cartodb_id=" + data.cartodb_id + "]         {line-width: 4;line-color:cyan;line-dasharray:15, 5;}}   ");
+			  });
+
+			  sublayer.on('featureOut', function(e, pos, latlng, data) {
+				sublayer.setCartoCSS(subLayerOptions.cartocss);
+			  });
+			  
 			  sublayer.set(subLayerOptions);
 			 // sublayer.on('featureClick', function(e, latlng, pos, data, subLayerIndex) {
 			//	sublayer[data].setCartoCSS("#nyc_bike_routes_052013{line-color:black; line-width:25;}");
@@ -168,10 +177,13 @@
       <div class="wrapper">
 
         <h1>NYC Bike Routes</h1>
-        <p>This map is made using the NYC DOT's public GIS data available at <a href="http://nyc.gov/dot/data" target="_blank">DOT's data portal</a></p>
-
         <!--Copy and paste the div below for creating content blocks-->
         <hr>
+		<p>Hover your mouse over a line to highlight it, and click for more info.</p>
+		<hr>
+		<p>Filter by <a href="#design">design</a>, <a href="#term">term</a>, or <a href="#time">time</a>.</p>
+		<hr>
+						<a name="design">Design filters</a>
 			<table width="100%" border="0" style="text-align:center;">
 				<tr>
 					<td colspan="2"><a href="#all" id="all" class="button all">All Data</a></td>
@@ -180,12 +192,20 @@
 					<td><a href="#onStreet" id="onStreet" class="button onStreet">On Street (only)</a></td>
 					<td><a href="#greenway" id="greenway" class="button greenway">Greenway</a></td>
 				</tr>
+				</table>
+		
+		
+		<hr>
+						<a name="term">Term filters</a>
+			<table width="100%" border="0" style="text-align:center;">
+
 				<tr>
 					<td><a href="#termBloom" id="termBloom" class="button termBloom">Mayor's Term</a></td>
 					<td><a href="#termJSK" id="termJSK" class="button termJSK">JSK Term</a></td>
 				</tr>
 				</table>
 				<hr>
+				<a name="time">Time filters</a>
 				<table width="100%" border="0" style="text-align:center;">
 				<tr>
 					<td colspan="2"><a href="#pre1970" id="pre1970" class="button pre1970">Pre-1970</a></td>
@@ -202,7 +222,8 @@
 
 
         <div class="context footer">
-           <p>Map created by <a href="http://aaronfraint.com" target="_blank">Aaron Fraint</a></p>
+           <p>Map designed and coded by <a href="http://aaronfraint.com" target="_blank">Aaron Fraint</a></p>
+		   <p>Bike Route GIS data available at <a href="http://nyc.gov/dot/data" target="_blank">NYC DOT's data portal</a></p>
         </div>
       </div>
     </div>

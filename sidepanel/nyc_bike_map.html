@@ -70,7 +70,7 @@ a{font-weight:bold;}
 		    }).addTo(map);
 
 
-			var layerUrl = 'http://bikeplanning.cartodb.com/api/v2/viz/5698c62a-5158-11e3-982e-dd91ed83a324/viz.json';
+			var layerUrl = 'http://bikeplanning.cartodb.com/api/v2/viz/a3058c72-5244-11e3-a83b-af62b8902a6d/viz.json';
 
 		  var sublayers = [];
 
@@ -81,15 +81,15 @@ a{font-weight:bold;}
 			  // add both layers and the CSS styling for each
 			  
 			  var subLayerOptions = {
-				sql: "SELECT * FROM nyc_bike_routes_052013",
-				cartocss: "/** simple visualization */      #nyc_bike_routes_052013{            line-width: 2;            line-color: yellow;            line-opacity: 0.7;	      }      #nyc_bike_routes_052013{        [ft_facilit='Dirt Trail'],          [ft_facilit='Stairs']{                    line-width: 2;            line-color: black;            line-opacity: 0.7;        }      	      }      #nyc_bike_routes_052013{        [ft_facilit='Bridge'],        [ft_facilit=' '],        [ft_facilit=null]          {                        [tf_facilit='Bridge'],            [tf_facilit=null]            {               line-color: blue;              line-opacity: 1;                    [zoom > 13]{                line-width: 8;            	}             	[zoom <= 13]{                line-width: 2;                  	}            }      	}            }      #nyc_bike_routes_052013{        [ft_facilit='Link'],        [ft_facilit=' '],        [ft_facilit=null]          {                        [tf_facilit='Link'],            [tf_facilit=null]            {               line-color: purple;              line-opacity: 1;              line-cap: round;                    [zoom > 13]{                line-width: 8;            	}             	[zoom <= 13]{                line-width: 2;                  	}            }      	}            }      #nyc_bike_routes_052013{        [ft_facilit='Sharrows'],        [ft_facilit='Signed Route'],        [ft_facilit='Bike-Friendly Parking'],        [ft_facilit=' '],        [ft_facilit=null]          {                        [tf_facilit='Sharrows'],            [tf_facilit='Signed Route'],            [tf_facilit='Bike-Friendly Parking'],            [tf_facilit=null]            {               line-color: orange;              line-opacity: 0.7;                    [zoom > 13]{                line-width: 10;            	}             	[zoom <= 13]{                line-width: 3;                  	}            }      	}            }      #nyc_bike_routes_052013::oneline{        [ft_facilit='Standard'],        [ft_facilit='Curbside']          {            [tf_facilit='Sharrows'],            [tf_facilit='Signed Route'],            [tf_facilit='Bike-Friendly Parking']            {               line-color: orange;              line-opacity: 0.7;            line-offset:3;                    [zoom > 13]{                line-width: 5;            	}             	[zoom <= 13]{                line-width: 3;                  	}            }      	}            }      #nyc_bike_routes_052013::twoline{        [ft_facilit='Standard'],        [ft_facilit='Curbside']          {                        [tf_facilit='Sharrows'],            [tf_facilit='Signed Route'],            [tf_facilit='Bike-Friendly Parking']            {               line-color: red;              line-opacity: 0.7;            line-offset:-3;                    [zoom > 13]{                line-width: 5;            	}             	[zoom <= 13]{                line-width: 3;                  	}            }      	}            }      #nyc_bike_routes_052013{        [ft_facilit='Standard'],        [ft_facilit='Curbside'],        [ft_facilit=' '],        [ft_facilit=null]          {                        [tf_facilit='Standard'],            [tf_facilit='Curbside'],            [tf_facilit=null]            {               line-color: red;              line-opacity: 0.7;                    [zoom > 13]{                line-width: 10;            	}             	[zoom <= 13]{                line-width: 3;                  	}            }      	}            }      #nyc_bike_routes_052013{        [ft_facilit='Ped Plaza'],        [ft_facilit='Sidewalk'],        [ft_facilit=' '],        [ft_facilit=null]          {                        [tf_facilit='Ped Plaza'],            [tf_facilit='Sidewalk'],            [tf_facilit=null]            {               line-color: cyan;              line-opacity: 1;                    [zoom > 13]{                line-width: 8;            	}             	[zoom <= 13]{                line-width: 2;                  	}            }      	}            }      #nyc_bike_routes_052013{        [ft_facilit='Protected Path'],        [ft_facilit='Path'],        [ft_facilit='Greenway'],        [ft_facilit=' '],        [ft_facilit=null]          {                        [tf_facilit='Protected Path'],            [tf_facilit='Path'],            [tf_facilit='Greenway'],            [tf_facilit=null]            {               line-color: green;              line-opacity: 0.7;                    [zoom > 13]{                line-width: 12;            	}             	[zoom <= 13]{                line-width: 6;                  	}            }      	}            }"
+				sql: "SELECT * FROM nyc_bike_routes_052013_dissolved",
+				cartocss: "/** simple visualization */      #nyc_bike_routes_052013_dissolved{            line-width: 2;            line-color: yellow;            line-opacity: 0.7;	      }      #nyc_bike_routes_052013_dissolved{        [ft_facilit='Dirt Trail'],          [ft_facilit='Stairs']{                    line-width: 2;            line-color: black;            line-opacity: 0.7;        }      	      }      #nyc_bike_routes_052013_dissolved{        [ft_facilit='Bridge'],        [ft_facilit=' '],        [ft_facilit=null]          {                        [tf_facilit='Bridge'],            [tf_facilit=null]            {               line-color: blue;              line-opacity: 1;                    [zoom > 13]{                line-width: 8;            	}             	[zoom <= 13]{                line-width: 2;                  	}            }      	}            }      #nyc_bike_routes_052013_dissolved{        [ft_facilit='Link'],        [ft_facilit=' '],        [ft_facilit=null]          {                        [tf_facilit='Link'],            [tf_facilit=null]            {               line-color: purple;              line-opacity: 1;              line-cap: round;                    [zoom > 13]{                line-width: 8;            	}             	[zoom <= 13]{                line-width: 2;                  	}            }      	}            }      #nyc_bike_routes_052013_dissolved{        [ft_facilit='Sharrows'],        [ft_facilit='Signed Route'],        [ft_facilit='Bike-Friendly Parking'],        [ft_facilit=' '],        [ft_facilit=null]          {                        [tf_facilit='Sharrows'],            [tf_facilit='Signed Route'],            [tf_facilit='Bike-Friendly Parking'],            [tf_facilit=null]            {               line-color: orange;              line-opacity: 0.7;                    [zoom > 13]{                line-width: 10;            	}             	[zoom <= 13]{                line-width: 3;                  	}            }      	}            }      #nyc_bike_routes_052013_dissolved::oneline{        [ft_facilit='Standard'],        [ft_facilit='Curbside']          {            [tf_facilit='Sharrows'],            [tf_facilit='Signed Route'],            [tf_facilit='Bike-Friendly Parking']            {               line-color: orange;              line-opacity: 0.7;            line-offset:3;                    [zoom > 13]{                line-width: 5;            	}             	[zoom <= 13]{                line-width: 3;                  	}            }      	}            }      #nyc_bike_routes_052013_dissolved::twoline{        [ft_facilit='Standard'],        [ft_facilit='Curbside']          {                        [tf_facilit='Sharrows'],            [tf_facilit='Signed Route'],            [tf_facilit='Bike-Friendly Parking']            {               line-color: red;              line-opacity: 0.7;            line-offset:-3;                    [zoom > 13]{                line-width: 5;            	}             	[zoom <= 13]{                line-width: 3;                  	}            }      	}            }      #nyc_bike_routes_052013_dissolved{        [ft_facilit='Standard'],        [ft_facilit='Curbside'],        [ft_facilit=' '],        [ft_facilit=null]          {                        [tf_facilit='Standard'],            [tf_facilit='Curbside'],            [tf_facilit=null]            {               line-color: red;              line-opacity: 0.7;                    [zoom > 13]{                line-width: 10;            	}             	[zoom <= 13]{                line-width: 3;                  	}            }      	}            }      #nyc_bike_routes_052013_dissolved{        [ft_facilit='Ped Plaza'],        [ft_facilit='Sidewalk'],        [ft_facilit=' '],        [ft_facilit=null]          {                        [tf_facilit='Ped Plaza'],            [tf_facilit='Sidewalk'],            [tf_facilit=null]            {               line-color: cyan;              line-opacity: 1;                    [zoom > 13]{                line-width: 8;            	}             	[zoom <= 13]{                line-width: 2;                  	}            }      	}            }      #nyc_bike_routes_052013_dissolved{        [ft_facilit='Protected Path'],        [ft_facilit='Path'],        [ft_facilit='Greenway'],        [ft_facilit=' '],        [ft_facilit=null]          {                        [tf_facilit='Protected Path'],            [tf_facilit='Path'],            [tf_facilit='Greenway'],            [tf_facilit=null]            {               line-color: green;              line-opacity: 0.7;                    [zoom > 13]{                line-width: 12;            	}             	[zoom <= 13]{                line-width: 6;                  	}            }      	}            }"
 			  }
 
 			  var sublayer = layer.getSubLayer(0);
 
 			  
 			  sublayer.on('featureOver', function(e, pos, latlng, data) {
-				sublayer.setCartoCSS(" #nyc_bike_routes_052013::glow{   [cartodb_id=" + data.cartodb_id + "]         {line-width: 25;line-color:yellow;}}   "+ subLayerOptions.cartocss + "#nyc_bike_routes_052013::over{   [cartodb_id=" + data.cartodb_id + "]         {line-width: 4;line-color:cyan;line-dasharray:15, 5;}}   ");
+				sublayer.setCartoCSS(" #nyc_bike_routes_052013_dissolved::glow{   [cartodb_id=" + data.cartodb_id + "]         {line-width: 25;line-color:yellow;}}   "+ subLayerOptions.cartocss + "#nyc_bike_routes_052013_dissolved::over{   [cartodb_id=" + data.cartodb_id + "]         {line-width: 4;line-color:cyan;line-dasharray:15, 5;}}   ");
 			  });
 
 			  sublayer.on('featureOut', function(e, pos, latlng, data) {
@@ -98,7 +98,7 @@ a{font-weight:bold;}
 			  
 			  sublayer.set(subLayerOptions);
 			 // sublayer.on('featureClick', function(e, latlng, pos, data, subLayerIndex) {
-			//	sublayer[data].setCartoCSS("#nyc_bike_routes_052013{line-color:black; line-width:25;}");
+			//	sublayer[data].setCartoCSS("#nyc_bike_routes_052013_dissolved{line-color:black; line-width:25;}");
 			//});
 			  
 			  sublayers.push(sublayer);
@@ -116,58 +116,58 @@ a{font-weight:bold;}
 			// wire up the button queries
 			var LayerActions = {
 				since2010: function(){
-				sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013 WHERE instdate > CAST('2009/12/31' as date)");
+				sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013_dissolved WHERE instdate > CAST('2009/12/31' as date)");
 
 				  return true;
 				},	
 				all: function(){
-				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013");
+				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013_dissolved");
 				  return true;
 				},		
 				termBloom: function(){
-				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013 WHERE moddate > CAST('2001/12/31' as date)");
+				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013_dissolved WHERE moddate > CAST('2001/12/31' as date)");
 				  return true;
 				},
 				termJSK: function(){
-				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013 WHERE moddate > CAST('2006/12/31' as date)");
+				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013_dissolved WHERE moddate > CAST('2006/12/31' as date)");
 				  return true;
 				},
 				onStreet: function(){
-				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013 WHERE ( ft_facilit NOT IN ('Greenway', 'Ped Plaza', 'Sidewalk') OR tf_facilit NOT IN ('Greenway', 'Ped Plaza', 'Sidewalk'))");
+				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013_dissolved WHERE ( ft_facilit NOT IN ('Greenway', 'Ped Plaza', 'Sidewalk') OR tf_facilit NOT IN ('Greenway', 'Ped Plaza', 'Sidewalk'))");
 				  return true;
 				},							
 				greenway: function(){
-				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013 WHERE ( ft_facilit IN ('Greenway', 'Ped Plaza', 'Sidewalk') OR tf_facilit IN ('Greenway', 'Ped Plaza', 'Sidewalk'))");
+				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013_dissolved WHERE ( ft_facilit IN ('Greenway', 'Ped Plaza', 'Sidewalk') OR tf_facilit IN ('Greenway', 'Ped Plaza', 'Sidewalk'))");
 				  return true;
 				},	
 				pre1970: function(){
-				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013 WHERE instdate < CAST('1971/01/01' as date)");
+				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013_dissolved WHERE instdate < CAST('1971/01/01' as date)");
 				  return true;
 				},
 				the70sto80s: function(){
-				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013 WHERE instdate > CAST('1970/12/31' as date) AND instdate < CAST('1990/12/31' as date)");
+				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013_dissolved WHERE instdate > CAST('1970/12/31' as date) AND instdate < CAST('1990/12/31' as date)");
 				  return true;
 				 },
 				the90sto02: function(){
-				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013 WHERE instdate > CAST('1989/12/31' as date) AND instdate < CAST('2001/12/31' as date)");
+				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013_dissolved WHERE instdate > CAST('1989/12/31' as date) AND instdate < CAST('2001/12/31' as date)");
 				  return true;
 				  },
 				the02to10: function(){
-				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013 WHERE instdate > CAST('2001/12/31' as date) AND instdate < CAST('2009/12/31' as date)");
+				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013_dissolved WHERE instdate > CAST('2001/12/31' as date) AND instdate < CAST('2009/12/31' as date)");
 				  return true;
 				  },
 				termG: function(){
-				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013 WHERE instdate > CAST('1993/12/31' as date) AND instdate < CAST('2001/12/31' as date)");
+				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013_dissolved WHERE instdate > CAST('1993/12/31' as date) AND instdate < CAST('2001/12/31' as date)");
 				  return true;
 				  },
 				Paths: function(){
-				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013 WHERE ( ft_facilit IN ('Protected Path', 'Ped Plaza', 'Path') OR tf_facilit IN ('Protected Path', 'Ped Plaza', 'Path'))");
+				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013_dissolved WHERE ( ft_facilit IN ('Protected Path', 'Ped Plaza', 'Path') OR tf_facilit IN ('Protected Path', 'Ped Plaza', 'Path'))");
 				  return true; },
 				lanes: function(){
-				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013 WHERE ( ft_facilit IN ('Standard', 'Curbside') OR tf_facilit IN ('Standard', 'Curbside'))");
+				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013_dissolved WHERE ( ft_facilit IN ('Standard', 'Curbside') OR tf_facilit IN ('Standard', 'Curbside'))");
 				  return true; },
 				routes: function(){
-				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013 WHERE ( ft_facilit IN ('Sharrows', 'Signed Route') OR tf_facilit IN ('Sharrows', 'Signed Route'))");
+				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013_dissolved WHERE ( ft_facilit IN ('Sharrows', 'Signed Route') OR tf_facilit IN ('Sharrows', 'Signed Route'))");
 				  return true;
 				},				
 				};

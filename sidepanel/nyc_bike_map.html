@@ -89,7 +89,7 @@ a{font-weight:bold;}
 
 			  
 			  sublayer.on('featureOver', function(e, pos, latlng, data) {
-				sublayer.setCartoCSS(" #nyc_bike_routes_052013_dissolved::glow{   [cartodb_id=" + data.cartodb_id + "]         {line-width: 25;line-color:yellow;}}   "+ subLayerOptions.cartocss + "#nyc_bike_routes_052013_dissolved::over{   [cartodb_id=" + data.cartodb_id + "]         {line-width: 4;line-color:cyan;line-dasharray:15, 5;}}   ");
+				sublayer.setCartoCSS(" #nyc_bike_routes_052013_dissolved::glow{   [cartodb_id=" + data.cartodb_id + "]         {line-width: 25;line-color:yellow;}}   "+ subLayerOptions.cartocss + "#nyc_bike_routes_052013_dissolved::over{   [cartodb_id=" + data.cartodb_id + "]         {line-width: 2;line-color:white;line-dasharray:15, 5;}}   ");
 			  });
 
 			  sublayer.on('featureOut', function(e, pos, latlng, data) {
@@ -115,6 +115,11 @@ a{font-weight:bold;}
 
 			// wire up the button queries
 			var LayerActions = {
+				redesign: function(){
+				sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013_dissolved WHERE instdate <> moddate");
+
+				  return true;
+				},	
 				since2010: function(){
 				sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013_dissolved WHERE instdate > CAST('2009/12/31' as date)");
 
@@ -194,14 +199,14 @@ a{font-weight:bold;}
     <div class="sidepanel">
       <div class="wrapper">
 
-        <h1>NYC Bike Routes</h1>
+        <h1>NYC Bicycle Network <span style="font-size:40%;color:red;">Beta</span></h1>
 		<p><a href="#about">about</a></p>
         <!--Copy and paste the div below for creating content blocks-->
         <hr>
 		<p style="font-size:85%;">This map allows you to view and filter the New York City bicycle network by  <a href="#design">design</a>, <a href="#term">term</a>, or <a href="#time">time</a>. Hover your mouse over a line to highlight it and click for more info.
 		</p>
 		<p style="font-size:85%;">
-		Please note that the map symbology is under active development. Any thin yellow lines are edge cases that are being incorporated into the route symbology.</p>
+		Please note that this map is under active development. Please send any thoughts, questions, or suggestions to Aaron Fraint at <a href="mailto:afraint@dot.nyc.gov">afraint@dot.nyc.gov</a></p>
 		
 		<hr>
 						<h1><a name="design">Design Type</a></h1>
@@ -210,7 +215,7 @@ a{font-weight:bold;}
 					<td colspan="2"><a href="#all" id="all" class="button all">All Data</a></td>
 				</tr>
 				<tr>
-					<td><a href="#onStreet" id="onStreet" class="button onStreet">On Street (only)</a></td>
+					<td><a href="#onStreet" id="onStreet" class="button onStreet">On Street</a></td>
 				</tr>
 				<tr>
 					<td><a href="#greenway" id="greenway" class="button greenway">Greenway</a></td>
@@ -224,6 +229,9 @@ a{font-weight:bold;}
 				</tr>
 				<tr>
 					<td><a href="#routes" id="routes" class="button routes">Routes</a></td>
+				</tr>
+				<tr>
+					<td><a href="#redesign" id="redesign" class="button redesign">Redesigned Routes</a></td>
 				</tr>
 
 				</table>
@@ -266,11 +274,11 @@ a{font-weight:bold;}
 
         <div class="context footer">
            <p>Map designed and coded by <a name="about" href="http://aaronfraint.com" target="_blank">Aaron Fraint</a> using <a href="http://developers.cartodb.com/documentation/cartodb-js.html" target="_blank">cartodb.js</a> and <a href="http://cartodb.com/" target="_blank">CartoDB</a>'s GIS hosting. </p>
-		   <p>Bike Route GIS data available at <a href="http://nyc.gov/dot/data" target="_blank">NYC DOT's data portal.</a></p>
+		   <p>The Bike Route GIS data is freely available at the NYC Department of Transportation's <a href="http://nyc.gov/dot/data" target="_blank">data portal.</a></p>
 		   <p>Data was minimally processed after acquisition. Steps included: 
 		   		   <ul>
-				<li>dissolving the lines by street,from/to, and design</li>
-				<li>creating YEAR and MONTH fields for instdate and moddate fields</li>
+				<li>dissolving the lines by street, fromstreet, tostreet, and designs</li>
+				<li>creating year fields to hold the formatted date</li>
 				<li>recalculating lane mileage</li>
 		   </ul>
 			</p>
@@ -279,8 +287,10 @@ a{font-weight:bold;}
 				<li>integrate a time slider</li>
 				<li>multiple queries: design AND term</li>
 		   </ul>
-		   Please get in touch if you want to help out!
 		   </p>
+		   <p style="text-align:center;">
+		   <img src="http://upload.wikimedia.org/wikipedia/en/1/19/NYCDOT.svg" style="max-width:60%;"/>
+		   <img src="http://cartodb.com/assets/logos/logos_full_cartodb_light-bd1021cdc700542578b029a596aca35b.png" style="max-width:90%;"/></p>
         </div>
       </div>
     </div>

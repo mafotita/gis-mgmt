@@ -12,6 +12,27 @@
       <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.ie.css" />
     <![endif]-->
     <!--Switch between the different themes changing the stylesheet below - light-theme.css |dark-theme.css -->
+	
+	
+	<!-- google analytics -->
+	
+	<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-45915827-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
+		<!-- google analytics -->
+	
+	
+	
     <link rel="stylesheet" href="css/light-theme.css">
     <link rel="stylesheet" href="css/makeitresponsive.css">
 	<link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
@@ -89,7 +110,7 @@ a{font-weight:bold;}
 
 			  
 			  sublayer.on('featureOver', function(e, pos, latlng, data) {
-				sublayer.setCartoCSS(" #nyc_bike_routes_052013_dissolved::glow{   [cartodb_id=" + data.cartodb_id + "]         {line-width: 25;line-color:yellow;}}   "+ subLayerOptions.cartocss + "#nyc_bike_routes_052013_dissolved::over{   [cartodb_id=" + data.cartodb_id + "]         {line-width: 2;line-color:white;line-dasharray:15, 5;}}   ");
+				sublayer.setCartoCSS(" #nyc_bike_routes_052013_dissolved::glow{   [cartodb_id=" + data.cartodb_id + "]         {line-width: 25;line-color:yellow;}}   "+ subLayerOptions.cartocss + "#nyc_bike_routes_052013_dissolved::over{   [cartodb_id=" + data.cartodb_id + "]         {[lanecount=1]{line-width: 2;line-color:white;}   [lanecount=2]{line-width: 2;line-color:white;line-dasharray:15, 5;}}}   ");
 			  });
 
 			  sublayer.on('featureOut', function(e, pos, latlng, data) {
@@ -199,11 +220,11 @@ a{font-weight:bold;}
     <div class="sidepanel">
       <div class="wrapper">
 
-        <h1>NYC Bicycle Network <span style="font-size:40%;color:red;">Beta</span></h1>
+        <h1>NYC Bicycle Network <span style="font-size:60%;color:red;font-weight:bold;">beta</span></h1>
 		<p><a href="#about">about</a></p>
         <!--Copy and paste the div below for creating content blocks-->
         <hr>
-		<p style="font-size:85%;">This map allows you to view and filter the New York City bicycle network by  <a href="#design">design</a>, <a href="#term">term</a>, or <a href="#time">time</a>. Hover your mouse over a line to highlight it and click for more info.
+		<p style="font-size:85%;">This map allows you to view and filter the New York City bicycle network by  <a href="#design">design</a>, <a href="#term">term</a>, or <a href="#time">time</a>. Hover your mouse over a line to highlight the segment and its directionality. A solid line is a one-way facility and a dashed line is two-way. Click the line for design and installation information.
 		</p>
 		<p style="font-size:85%;">
 		Please note that this map is under active development. Please send any thoughts, questions, or suggestions to Aaron Fraint at <a href="mailto:afraint@dot.nyc.gov">afraint@dot.nyc.gov</a></p>

@@ -30,8 +30,17 @@
 
 		</script>
 		<!-- google analytics -->
-	
-	
+
+
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>	
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="css/jQRangeSlider-5.5.0/jQRangeSlider-min.js"></script>	
+<script src="css/jQRangeSlider-5.5.0/lib/jquery.mousewheel.min.js"></script>
+<script src="css/jQRangeSlider-5.5.0/jQDateRangeSlider-min.js"></script>
+
+<script src="css/jQRangeSlider-5.5.0/demo/dateSliderDemo.js"></script>
+    <link rel="stylesheet" href="css/jQRangeSlider-5.5.0/css/classic.css">
 	
     <link rel="stylesheet" href="css/light-theme.css">
     <link rel="stylesheet" href="css/makeitresponsive.css">
@@ -122,16 +131,40 @@ a{font-weight:bold;}
 			//	sublayer[data].setCartoCSS("#nyc_bike_routes_052013_dissolved{line-color:black; line-width:25;}");
 			//});
 			  
-			  sublayers.push(sublayer);
 			  
 			  
+		
+			sublayers.push(sublayer);  
 			  
 			  
 			}).on('error', function() {
 			  //log the error
 			});
 			
-			
+			$("#slider").rangeSlider({
+			defaultValues:{min: 2004, max: 2010},
+bounds:{
+    min: 1970,
+    max: 2013
+  }
+		});
+
+$("#slider").bind("userValuesChanged", function(e, data){
+				var SliderBounds = $("#slider").rangeSlider("values");
+				var month = 1;
+				if($('#cy').is(':checked')) {month=1;};
+				if($('#fy').is(':checked')) {month=7;};
+				var change = Math.round(SliderBounds.max) - Math.round(SliderBounds.min);
+				var low = Math.round(SliderBounds.min).toString() +"/"+ month.toString() + "/01";
+				var high = Math.round(SliderBounds.max).toString() +"/"+ month.toString() + "/01";
+				var nice_low = month.toString() + " / 1 / " + Math.round(SliderBounds.min).toString();
+				var nice_high = month.toString() + " / 1 / " + Math.round(SliderBounds.max).toString();
+				var qry = "SELECT * FROM nyc_bike_routes_052013_dissolved WHERE instdate > CAST ('"+ low +"' as date) AND instdate < CAST ('"+ high + "' as date)";
+				
+			sublayers[0].setSQL(qry);
+				var txt_qry = "You queried " + change.toString() + " years of data, " + nice_low +" to " + nice_high;
+			$("#fSlider-text").html(txt_qry);
+			});
 			
 
 			// wire up the button queries
@@ -148,6 +181,7 @@ a{font-weight:bold;}
 				},	
 				all: function(){
 				  sublayers[0].setSQL("SELECT * FROM nyc_bike_routes_052013_dissolved");
+				  $("#fSlider-text").html("");
 				  return true;
 				},		
 				termBloom: function(){
@@ -209,9 +243,13 @@ a{font-weight:bold;}
 			
 			
 			
-			
+		
+
+	
 		  }
 	  </script>
+
+
   </head>
   <body onload=init()>
 
@@ -228,7 +266,9 @@ a{font-weight:bold;}
 		</p>
 		<p style="font-size:85%;">
 		Please note that this map is under active development. Please send any thoughts, questions, or suggestions to Aaron Fraint at <a href="mailto:afraint@dot.nyc.gov">afraint@dot.nyc.gov</a></p>
-		
+
+
+			
 		<hr>
 						<h1><a name="design">Design Type</a></h1>
 			<table width="100%" border="0" style="text-align:left;">
@@ -272,8 +312,23 @@ a{font-weight:bold;}
 					<td><a href="#termJSK" id="termJSK" class="button termJSK">JSK's Term at DOT<br/>2006 - present</a></td>
 				</tr>
 				</table>
-				<hr>
+				
+
+		<hr>
 				<h1><a name="time">Network Growth Over Time</a></h1>
+
+
+
+
+
+<h4>Calendar Year Time Slider</h4>        <input id="cy" type="radio" value="1" name="priority">CY</input>
+		<input id="fy" type="radio" value="7" name="priority">FY</input>
+<div id="slider"></div>
+
+<div id="fSlider-text" style="font-size:85%;color:red;"></div>
+
+
+
 				<table width="100%" border="0" style="text-align:left;">
 				<tr>
 					<td colspan="2"><a href="#pre1970" id="pre1970" class="button pre1970">Pre-1970</a></td>
@@ -291,6 +346,7 @@ a{font-weight:bold;}
 				<td><a href="#since2010" id="since2010" class="button since2010">Since 2010</a></td>
 				</tr>				
 				</table>
+
 
 
         <div class="context footer">
@@ -322,6 +378,12 @@ a{font-weight:bold;}
     Go to your map in CartoDB, click on share, and copy the URL undert the API section
     Check the cartodb.js documentation for more info
     http://developers.cartodb.com/documentation/cartodb-js.html-->
+
+<script type="text/javascript">
+
+
+	</script>
+
 
 
   </body>

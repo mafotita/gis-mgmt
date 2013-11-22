@@ -165,8 +165,12 @@ $("#slider").bind("userValuesChanged", function(e, data){
 				var nice_low = month.toString() + " / 1 / " + Math.round(SliderBounds.min).toString();
 				var nice_high = month.toString() + " / 1 / " + Math.round(SliderBounds.max).toString();
 				var qry = "SELECT * FROM nyc_bike_routes_052013_dissolved WHERE instdate > CAST ('"+ low +"' as date) AND instdate < CAST ('"+ high + "' as date)";
+		
+				sublayers[0].setSQL(qry);
 				
-			sublayers[0].setSQL(qry);
+				
+
+				
 				var txt_qry = "You queried " + change.toString() + " years of data, " + nice_low +" to " + nice_high;
 			$("#fSlider-text").html(txt_qry);
 			});

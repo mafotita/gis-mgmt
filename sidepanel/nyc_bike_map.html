@@ -63,7 +63,12 @@
 				text-decoration:none;
 				text-align:center;
 			}
+			.all{background:#07A666 ;}
 			
+			a.button{
+				color:#07A666;
+			}
+			a.button.all{color:yellow;}
 		.button:hover {
 				background-color: gray;
 				color:white;
@@ -271,46 +276,39 @@ $("#slider").bind("userValuesChanged", function(e, data){
 			
 		<hr>
 						<h1><a name="design">Design Type</a></h1>
-			<table width="100%" border="0" style="text-align:left;">
+			<table width="100%" border="0" style="text-align:center	;">
 				<tr>
 					<td colspan="2"><a href="#all" id="all" class="button all">All Data</a></td>
 				</tr>
 				<tr>
 					<td><a href="#onStreet" id="onStreet" class="button onStreet">On Street</a></td>
-				</tr>
-				<tr>
 					<td><a href="#greenway" id="greenway" class="button greenway">Greenway</a></td>
 				</tr>
 
+
 				<tr>
 					<td><a href="#Paths" id="Paths" class="button Paths">Paths</a></td>
-				</tr>
-				<tr>
 					<td><a href="#lanes" id="lanes" class="button lanes">Lanes</a></td>
 				</tr>
+
 				<tr>
 					<td><a href="#routes" id="routes" class="button routes">Routes</a></td>
+					<td><a href="#redesign" id="redesign" class="button redesign">Redesigned<br/>Routes</a></td>
 				</tr>
-				<tr>
-					<td><a href="#redesign" id="redesign" class="button redesign">Redesigned Routes</a></td>
-				</tr>
+
 
 				</table>
 		
 		
 		<hr>	<h1><a name="term">Terms</a></h1>
 					
-			<table width="100%" border="0" style="text-align:left;">
+			<table width="100%" border="0" style="text-align:center;">
 
-			<tr>
-					<td><a href="#termG" id="termG" class="button termG">Giuliani's Term<br/>1994 - 2001</a></td>
-				</tr>
-				<tr>
+					<tr>
 					<td><a href="#termBloom" id="termBloom" class="button termBloom">Bloomberg's Term<br/>2002 - present</a></td>
-				</tr>
-				<tr>
 					<td><a href="#termJSK" id="termJSK" class="button termJSK">JSK's Term at DOT<br/>2006 - present</a></td>
 				</tr>
+
 				</table>
 				
 
@@ -321,7 +319,7 @@ $("#slider").bind("userValuesChanged", function(e, data){
 
 
 
-<h4>Calendar Year Time Slider</h4>        <input id="cy" type="radio" value="1" name="priority">CY</input>
+<h4>Year Slider</h4>        <input id="cy" type="radio" value="1" name="priority">CY</input>
 		<input id="fy" type="radio" value="7" name="priority">FY</input>
 <div id="slider"></div>
 
@@ -329,22 +327,12 @@ $("#slider").bind("userValuesChanged", function(e, data){
 
 
 
-				<table width="100%" border="0" style="text-align:left;">
+				<table width="100%" border="0" style="text-align:center;">
 				<tr>
-					<td colspan="2"><a href="#pre1970" id="pre1970" class="button pre1970">Pre-1970</a></td>
+					<td><a href="#pre1970" id="pre1970" class="button pre1970">Pre-1970</a></td>
+					<td ><a href="#all" id="all" class="button all">All Data</a></td>
 				</tr>
-				<tr>
-					<td><a href="#the70sto80s" id="the70sto80s" class="button the70sto80s">1970 to 1989</a></td>
-									</tr>
-				<tr>
-				<td><a href="#the90sto02" id="the90sto02" class="button the90sto02">1990 - 2001</a></td>
-				</tr>
-				<tr>
-					<td><a href="#the02to10" id="the02to10" class="button the02to10">2002 to 2010</a></td>
-									</tr>
-				<tr>
-				<td><a href="#since2010" id="since2010" class="button since2010">Since 2010</a></td>
-				</tr>				
+			
 				</table>
 
 
@@ -361,12 +349,14 @@ $("#slider").bind("userValuesChanged", function(e, data){
 			</p>
 		   <p>Work to be done:
 		   <ul>
-				<li>integrate a time slider</li>
-				<li>multiple queries: design AND term</li>
+				
+				<li>multiple queries: design AND time slider</li>
+				<li>checkboxes for design treatments</li>
+				
 		   </ul>
 		   </p>
 		   <p style="text-align:center;">
-		   <img src="http://upload.wikimedia.org/wikipedia/en/1/19/NYCDOT.svg" style="max-width:60%;"/>
+		   <img src="http://upload.wikimedia.org/wikipedia/en/1/19/NYCDOT.svg" style="width:60%;max-width:150px;"/>
 		   <img src="http://cartodb.com/assets/logos/logos_full_cartodb_light-bd1021cdc700542578b029a596aca35b.png" style="max-width:90%;"/></p>
         </div>
       </div>

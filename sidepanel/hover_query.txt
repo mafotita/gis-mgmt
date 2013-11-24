@@ -1,0 +1,28 @@
+subLayerOptions.cartocss + "
+#nyc_bike_routes_052013_dissolved::over{   
+	[cartodb_id=" + data.cartodb_id + "]{
+		[lanecount=2]{
+			line-width: 2;
+			line-color:yellow;
+			line-dasharray:15, 5;}}}  
+
+#nyc_bike_routes_052013_dissolved::glow{   
+	[cartodb_id=" + data.cartodb_id + "]{
+		line-width: 3;
+		line-color:black;
+		line-opacity:0.8;
+		[zoom>14]{line-offset:-12;line-width: 2;}
+		[zoom>13]{line-offset:-8;}
+		[zoom<=13]{line-offset:-4;}
+		}
+} 
+#nyc_bike_routes_052013_dissolved::otherglow{   
+	[cartodb_id=" + data.cartodb_id + "]{
+			line-width: 3;
+			line-color:black;
+			line-opacity:0.8;
+			[zoom>14]{line-offset:12;line-width: 2;}
+			[zoom>13]{line-offset:8;}
+			[zoom<=13]{line-offset:4;}
+			}
+}			"

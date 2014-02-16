@@ -1,103 +1,126 @@
-/** simple visualization */
-#nyc_bike_routes_052013{
+#nyc_bike_routes_052013_dissolved{
+	[zoom <= 13]{line-width: 4;line-opacity: 0.7;	}
+	[zoom > 13]{line-width: 8;line-opacity: 0.5;	}
+	[zoom > 14]{line-width: 12;line-opacity: 0.35;	}
+  
+  
+	/** OTHER routes get a yellow line */
+
       line-width: 2;
       line-color: yellow;
-      line-opacity: 0.7;	
-}
-#nyc_bike_routes_052013{
-  [ft_facilit="Dirt Trail"],
-    [ft_facilit="Stairs"]{
+      
+
+	/** TRAILS */	  
+  [ft_facilit='Dirt Trail'],
+    [ft_facilit='Stairs']{
   
       line-width: 2;
       line-color: black;
-      line-opacity: 0.7;
+      
   }
-	
-}
-#nyc_bike_routes_052013{
-  [ft_facilit="Bridge"],
-  [ft_facilit=" "],
+		/** BRIDGES */
+  [ft_facilit='Bridge'],
+  [ft_facilit=' '],
   [ft_facilit=null]
     {
       
-      [tf_facilit="Bridge"],
+      [tf_facilit='Bridge'],
       [tf_facilit=null]
       { 
         line-color: blue;
-        line-opacity: 1;
-
-        [zoom > 13]{
-          line-width: 8;
-      	}
-       	[zoom <= 13]{
-          line-width: 2;
-
-      	}
       }
 	}
-
-}
-#nyc_bike_routes_052013{
-  [ft_facilit="Link"],
-  [ft_facilit=" "],
+	/** LINKS */
+  [ft_facilit='Link'],
+  [ft_facilit=' '],
   [ft_facilit=null]
     {
       
-      [tf_facilit="Link"],
+      [tf_facilit='Link'],
       [tf_facilit=null]
       { 
         line-color: purple;
-        line-opacity: 1;
+       
         line-cap: round;
 
-        [zoom > 13]{
-          line-width: 8;
-      	}
-       	[zoom <= 13]{
-          line-width: 2;
 
-      	}
       }
 	}
-
-}
-#nyc_bike_routes_052013{
-  [ft_facilit="Sharrows"],
-  [ft_facilit="Signed Route"],
-  [ft_facilit="Bike-Friendly Parking"],
-  [ft_facilit=" "],
+	/** Class III */
+  [ft_facilit='Sharrows'],
+  [ft_facilit='Signed Route'],
+  [ft_facilit='Bike-Friendly Parking'],
+  [ft_facilit=' '],
   [ft_facilit=null]
     {
       
-      [tf_facilit="Sharrows"],
-      [tf_facilit="Signed Route"],
-      [tf_facilit="Bike-Friendly Parking"],
+      [tf_facilit='Sharrows'],
+      [tf_facilit='Signed Route'],
+      [tf_facilit='Bike-Friendly Parking'],
       [tf_facilit=null]
       { 
         line-color: orange;
-        line-opacity: 0.7;
 
-        [zoom > 13]{
-          line-width: 10;
-      	}
-       	[zoom <= 13]{
-          line-width: 3;
+      }
+	}
+	/** CLASS II */
+  [ft_facilit='Standard'],
+  [ft_facilit='Curbside'],
+  [ft_facilit=' '],
+  [ft_facilit=null]
+    {
+      
+      [tf_facilit='Standard'],
+      [tf_facilit='Curbside'],
+      [tf_facilit=null]
+      { 
+        line-color: red;
 
-      	}
+      }
+	}
+	/** Ped facilities */
+  [ft_facilit='Ped Plaza'],
+  [ft_facilit='Sidewalk'],
+  [ft_facilit=' '],
+  [ft_facilit=null]
+    {
+      
+      [tf_facilit='Ped Plaza'],
+      [tf_facilit='Sidewalk'],
+      [tf_facilit=null]
+      { 
+        line-color: cyan;
+      }
+	}
+	/** CLASS 1 */
+  [ft_facilit='Protected Path'],
+  [ft_facilit='Path'],
+  [ft_facilit='Greenway'],
+  [ft_facilit=' '],
+  [ft_facilit=null]
+    {
+      
+      [tf_facilit='Protected Path'],
+      [tf_facilit='Path'],
+      [tf_facilit='Greenway'],
+      [tf_facilit=null]
+      { 
+        line-color: green;
       }
 	}
 
 }
-#nyc_bike_routes_052013::oneline{
-  [ft_facilit="Standard"],
-  [ft_facilit="Curbside"]
+	/** class 2 and 3 */
+#nyc_bike_routes_052013_dissolved::oneline{
+  [ft_facilit='Standard'],
+  [ft_facilit='Curbside']
     {
-      [tf_facilit="Sharrows"],
-      [tf_facilit="Signed Route"],
-      [tf_facilit="Bike-Friendly Parking"]
+      [tf_facilit='Sharrows'],
+      [tf_facilit='Signed Route'],
+      [tf_facilit='Bike-Friendly Parking']
       { 
         line-color: orange;
-        line-opacity: 0.7;
+        line-opacity: 0.35;
       line-offset:3;
 
         [zoom > 13]{
@@ -111,17 +134,17 @@
 	}
 
 }
-#nyc_bike_routes_052013::twoline{
-  [ft_facilit="Standard"],
-  [ft_facilit="Curbside"]
+#nyc_bike_routes_052013_dissolved::twoline{
+  [ft_facilit='Standard'],
+  [ft_facilit='Curbside']
     {
       
-      [tf_facilit="Sharrows"],
-      [tf_facilit="Signed Route"],
-      [tf_facilit="Bike-Friendly Parking"]
+      [tf_facilit='Sharrows'],
+      [tf_facilit='Signed Route'],
+      [tf_facilit='Bike-Friendly Parking']
       { 
         line-color: red;
-        line-opacity: 0.7;
+        line-opacity: 0.35;
       line-offset:-3;
 
         [zoom > 13]{
@@ -129,83 +152,6 @@
       	}
        	[zoom <= 13]{
           line-width: 3;
-
-      	}
-      }
-	}
-
-}
-#nyc_bike_routes_052013{
-  [ft_facilit="Standard"],
-  [ft_facilit="Curbside"],
-  [ft_facilit=" "],
-  [ft_facilit=null]
-    {
-      
-      [tf_facilit="Standard"],
-      [tf_facilit="Curbside"],
-      [tf_facilit=null]
-      { 
-        line-color: red;
-        line-opacity: 0.7;
-
-        [zoom > 13]{
-          line-width: 10;
-      	}
-       	[zoom <= 13]{
-          line-width: 3;
-
-      	}
-      }
-	}
-
-}
-#nyc_bike_routes_052013{
-  [ft_facilit="Ped Plaza"],
-  [ft_facilit="Sidewalk"],
-  [ft_facilit=" "],
-  [ft_facilit=null]
-    {
-      
-      [tf_facilit="Ped Plaza"],
-      [tf_facilit="Sidewalk"],
-      [tf_facilit=null]
-      { 
-        line-color: cyan;
-        line-opacity: 1;
-
-        [zoom > 13]{
-          line-width: 8;
-      	}
-       	[zoom <= 13]{
-          line-width: 2;
-
-      	}
-      }
-	}
-
-}
-#nyc_bike_routes_052013{
-  [ft_facilit="Protected Path"],
-  [ft_facilit="Path"],
-  [ft_facilit="Greenway"],
-  [ft_facilit=" "],
-  [ft_facilit=null]
-    {
-      
-      [tf_facilit="Protected Path"],
-      [tf_facilit="Path"],
-      [tf_facilit="Greenway"],
-      [tf_facilit=null]
-      { 
-        line-color: green;
-        line-opacity: 0.7;
-
-        [zoom > 13]{
-          line-width: 12;
-      	}
-       	[zoom <= 13]{
-          line-width: 6;
 
       	}
       }

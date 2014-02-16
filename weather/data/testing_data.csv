@@ -1,0 +1,5 @@
+year,month,day,mintempi,meantempi,maxtempi,maxvisi,meanvisi,minvisi,fog,humidity,precipi,thunder,hail,snow,snowdepthi,snowfalli,monthtodatesnowfalli,meanwindspdi,rain,mintempm,precipsource
+2013,10,30,47,54,60,10,9,5,0,,0.00,0,0,0,0.00,0.00,0.00,2,0,8,
+2013,10,29,44,50,56,10,10,10,0,,0.00,0,0,0,0.00,0.00,0.00,5,0,7,
+2013,10,28,43,52,61,10,10,10,0,,0.00,0,0,0,0.00,0.00,0.00,4,0,6,
+2013,10,27,46,52,58,10,10,10,0,,0.00,0,0,0,0.00,0.00,0.00,5,0,8,

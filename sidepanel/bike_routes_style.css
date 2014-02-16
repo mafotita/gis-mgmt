@@ -158,3 +158,50 @@
 	}
 
 }
+#nyc_bike_routes_052013_dissolved::oneline{
+  [tf_facilit='Standard'],
+  [tf_facilit='Curbside']
+    {
+      [ft_facilit='Sharrows'],
+      [ft_facilit='Signed Route'],
+      [ft_facilit='Bike-Friendly Parking']
+      { 
+        line-color: orange;
+        line-opacity: 0.35;
+      line-offset:3;
+
+        [zoom > 13]{
+          line-width: 5;
+      	}
+       	[zoom <= 13]{
+          line-width: 3;
+
+      	}
+      }
+	}
+
+}
+#nyc_bike_routes_052013_dissolved::twoline{
+  [tf_facilit='Standard'],
+  [tf_facilit='Curbside']
+    {
+      
+      [ft_facilit='Sharrows'],
+      [ft_facilit='Signed Route'],
+      [ft_facilit='Bike-Friendly Parking']
+      { 
+        line-color: red;
+        line-opacity: 0.35;
+      line-offset:-3;
+
+        [zoom > 13]{
+          line-width: 5;
+      	}
+       	[zoom <= 13]{
+          line-width: 3;
+
+      	}
+      }
+	}
+
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+		<meta charset="utf-8">
+		<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+
+		<title>NYC Bike Routes</title>
+		<style>
+			body{
+				font-family: 'Varela Round', sans-serif;
+				text-align:center;
+			}
+			.bar {
+			  fill: steelblue;
+			}
+			.bar:hover {
+			  fill: green;
+			}
+			.axis text {
+			  font: 10px sans-serif;
+			}
+			.barlabel{
+				color:white;
+			}
+			
+			.axis path,
+			.axis line {
+			  fill: none;
+			  stroke: #000;
+			  shape-rendering: crispEdges;
+			}
+
+			.x.axis path {
+			  display: none;
+			}
+			
+			
+		</style>
+        <script src="http://d3js.org/d3.v3.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+	</head>
+	<body>
+        
+		<h3>Growth of the NYC Bicycle Network</h3>
+		<p>1895 - 2013</p>
+		
+	<svg class="chart"></svg>
+	
+	<p>This chart was made by Aaron Fraint, using the <a href="http://d3js.org/" target="_blank">D3.js</a> library and <a href="http://www.nyc.gov/html/dot/html/about/datafeeds.shtml#Bikes" target="_blank">NYC DOT's Bicycle Route data</a>.</p>
+
+		<script>
+
+		
+		var margin = {top: 20, right: 30, bottom: 50, left: 40},
+			width = 1280 - margin.left - margin.right,
+			height = 500 - margin.top - margin.bottom;
+
+		var x = d3.scale.ordinal()
+			.rangeRoundBands([0, width], .1);
+
+		var y = d3.scale.linear()
+			.range([height, 0]);
+
+		var xAxis = d3.svg.axis()
+			.scale(x)
+			.orient("bottom");
+
+		var yAxis = d3.svg.axis()
+			.scale(y)
+			.orient("left");
+
+		var chart = d3.select(".chart")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+		  .append("g")
+			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+	
+			
+			
+		d3.csv("bikes_by_year.csv", type, function(error, data) {
+		  x.domain(data.map(function(d) { return d.year; }));
+		  y.domain([0, d3.max(data, function(d) { return d.miles; })]);
+
+		  
+		  			  // Draw Y-axis grid lines
+				chart.selectAll("line.y")
+				  .data(y.ticks(8))
+				  .enter().append("line")
+				  .attr("class", "y")
+				  .attr("x1", 0)
+				  .attr("x2", width)
+				  .attr("y1", y)
+				  .attr("y2", y)
+				  .style("stroke", "#ccc")
+				  .attr("stroke-dasharray","10,5")
+				  .attr("stroke-width","1");
+				  
+		  
+		  
+		  chart.append("g")
+			    .attr("class", "x axis")
+			    .attr("transform", "translate(0," + height + ")")
+				.call(xAxis)
+				.selectAll("text")  
+				.style("text-anchor", "end")
+				.attr("dx", "-.8em")
+				.attr("dy", ".15em")
+				.attr("transform", function(d) {
+					return "rotate(-45)" 
+					});
+
+		  chart.append("g")
+			  .attr("class", "y axis")
+			  .call(yAxis);
+			  
+		chart.append("text")
+			.attr("class", "y label")
+			.attr("text-anchor", "end")
+			.attr("y", 6)
+			.attr("dy", ".75em")
+			.attr("transform", "rotate(-90)")
+			.text("yearly installed mileage");
+			
+
+
+		 var wholechart = chart.selectAll(".bar")
+			  .data(data)
+			.enter();
+			
+			wholechart.append("rect")
+			  .attr("class", "bar")
+			  .attr("x", function(d) { return x(d.year); })
+			  .attr("y", function(d) { return y(d.miles); })
+			  .attr("height", function(d) { return height - y(d.miles); })
+			  .attr("width", x.rangeBand())
+
+			wholechart.append("text")
+			  .attr("x", function(d) { return x(d.year); })
+			  .attr("y", function(d) { return y(d.miles) - 5; })
+			  .style('font-size', "60%")
+			  .style('text-anchor', "middle-center")
+				.text(function(d){ return d.miles})
+				.attr('fill', 'black');
+
+
+			  
+			  
+
+		});
+		
+
+			  function type(d) {
+		  d.miles = +d.miles; // coerce to number
+		  return d;
+		}
+
+		
+		</script>
+		 
+		 
+	</body>
+</html>
